@@ -7,6 +7,7 @@ import br.com.hugodev.helpdesk.exception.BusinessException;
 import br.com.hugodev.helpdesk.mapper.UserMapper;
 import br.com.hugodev.helpdesk.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
@@ -20,6 +21,8 @@ public class UserService {
 
     private final UserMapper userMapper;
 
+    private final PasswordEncoder passwordEncoder;
+
     public User createUser(UserDto dto){
         Optional<UserEntity> userEntity = userRepository.findByUsername(dto.username());
 
@@ -28,6 +31,7 @@ public class UserService {
         }
 
         UserEntity newUserEntity = userMapper.toEntity(dto);
+        newUserEntity.setPassword(passwordEncoder.encode(newUserEntity.getPassword()));
         newUserEntity.setCreatedAt(new Date());
         newUserEntity.setIsActive(true);
         return userMapper.toDomain(userRepository.save(newUserEntity));
