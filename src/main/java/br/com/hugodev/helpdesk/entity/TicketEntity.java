@@ -35,6 +35,9 @@ public class TicketEntity {
     @Column(name="description", nullable = false)
     private String description;
 
+    @OneToMany(mappedBy = "ticket")
+    private List<TicketAttachmentEntity> attachments;
+
     @Column(name="status", nullable = false)
     @Enumerated(EnumType.STRING)
     private TicketStatus status;
