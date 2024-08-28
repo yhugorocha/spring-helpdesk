@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -23,6 +24,9 @@ public class TicketInteractionEntity {
     @ManyToOne
     @JoinColumn(name="ticket_id", nullable = false)
     private TicketEntity ticket;
+
+    @OneToMany(mappedBy = "ticketInteractionId")
+    private List<TicketAttachmentEntity> attachments;
 
     @ManyToOne
     @JoinColumn(name="sent_by_user_id", nullable = false)
