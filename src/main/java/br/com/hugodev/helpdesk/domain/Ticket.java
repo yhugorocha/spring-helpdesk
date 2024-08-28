@@ -1,8 +1,26 @@
 package br.com.hugodev.helpdesk.domain;
 
+import br.com.hugodev.helpdesk.enums.TicketStatus;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.util.Date;
 import java.util.UUID;
 
-public record Ticket(UUID id, User support, String subject, String description, String status, Date createdAt, User createdBy, Date updateAt, User updateBy) {
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Ticket {
+
+    private UUID id;
+    private User support;
+    private String subject;
+    private String description;
+    private TicketStatus status;
+    private Date createdAt;
+    private User createdBy;
+    private Date updateAt;
+    private User updateBy;
 
 }
