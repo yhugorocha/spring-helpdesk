@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Cascade;
 
 import java.util.Date;
 import java.util.UUID;
@@ -17,12 +16,11 @@ import java.util.UUID;
 public class TicketAttachmentEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="id", nullable = false)
     private UUID id;
 
     @ManyToOne
-    @Cascade(org.hibernate.annotations.CascadeType.PERSIST)
+    @JoinColumn
     private TicketEntity ticket;
 
     @ManyToOne
@@ -31,6 +29,9 @@ public class TicketAttachmentEntity {
 
     @Column(name="filename", nullable = false)
     private String filename;
+
+    @Column(name="url", nullable = false)
+    private String url;
 
     @Column(name="created_at", nullable = false)
     private Date createdAt;
