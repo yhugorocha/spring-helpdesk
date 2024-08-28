@@ -1,4 +1,6 @@
 package br.com.hugodev.helpdesk.dto;
 
-public record UserDto(String username, String password, String name, String email) {
+import java.util.UUID;
+
+public record UserDto(UUID id, String username, String name, String email) {
 }
