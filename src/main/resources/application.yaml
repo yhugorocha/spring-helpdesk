@@ -15,4 +15,20 @@ spring:
     url: jdbc:postgresql://localhost:5432/helpdesk
     username: postgres
     password: postgres
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+
+app:
+  path:
+    files: /Users/yhugo/Desktop/Arquivos/
+
+jwt:
+  public:
+    key: classpath:app.pub
+  private:
+    key: classpath:app.key
+
+
 
