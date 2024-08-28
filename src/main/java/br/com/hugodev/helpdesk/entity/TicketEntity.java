@@ -38,6 +38,9 @@ public class TicketEntity {
     @OneToMany(mappedBy = "ticket")
     private List<TicketAttachmentEntity> attachments;
 
+    @OneToMany(mappedBy = "ticket")
+    private List<TicketInteractionEntity> interaction;
+
     @Column(name="status", nullable = false)
     @Enumerated(EnumType.STRING)
     private TicketStatus status;
