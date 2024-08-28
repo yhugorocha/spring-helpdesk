@@ -23,10 +23,10 @@ import java.util.stream.Collectors;
 @Component
 public class JwtUtil {
 
-    @Value("${jwt.public.key}")
+    @Value("${jwt.private.key}")
     private RSAPrivateKey rsaPrivateKey;
 
-    @Value("${jwt.private.key}")
+    @Value("${jwt.public.key}")
     private RSAPublicKey rsaPublicKey;
 
     public String createToken(Authentication authentication){
