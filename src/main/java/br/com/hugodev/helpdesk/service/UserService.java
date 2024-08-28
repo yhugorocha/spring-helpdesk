@@ -1,6 +1,6 @@
 package br.com.hugodev.helpdesk.service;
 
-import br.com.hugodev.helpdesk.domain.User;
+import br.com.hugodev.helpdesk.dto.CreateUserDto;
 import br.com.hugodev.helpdesk.dto.UserDto;
 import br.com.hugodev.helpdesk.entity.UserEntity;
 import br.com.hugodev.helpdesk.exception.BusinessException;
@@ -23,18 +23,19 @@ public class UserService {
 
     private final PasswordEncoder passwordEncoder;
 
-    public User createUser(UserDto dto){
-        Optional<UserEntity> userEntity = userRepository.findByUsername(dto.username());
+    public UserDto createUser(CreateUserDto userDto){
+        var userDomain = userMapper.toDomain(userDto);
+        Optional<UserEntity> userEntity = userRepository.findByUsername(userDomain.getUsername());
 
         if(userEntity.isPresent()){
             throw new BusinessException("This username is already in use in the system");
         }
 
-        UserEntity newUserEntity = userMapper.toEntity(dto);
-        newUserEntity.setPassword(passwordEncoder.encode(newUserEntity.getPassword()));
-        newUserEntity.setCreatedAt(new Date());
-        newUserEntity.setIsActive(true);
-        return userMapper.toDomain(userRepository.save(newUserEntity));
+        userDomain.setPassword(passwordEncoder.encode(userDomain.getPassword()));
+        userDomain.setCreatedAt(new Date());
+        userDomain.setIsActive(true);
+
+        return userMapper.toDto(userRepository.save(userMapper.toEntity(userDomain)));
     }
 
 }
