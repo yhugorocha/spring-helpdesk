@@ -1,6 +1,5 @@
 package br.com.hugodev.helpdesk.controller;
 
-import br.com.hugodev.helpdesk.dto.CreateTicketInterectionDto;
 import br.com.hugodev.helpdesk.dto.TicketDto;
 import br.com.hugodev.helpdesk.dto.TicketInteractionDto;
 import br.com.hugodev.helpdesk.service.TicketAttachmentService;
@@ -9,7 +8,6 @@ import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,9 +1,8 @@
 package br.com.hugodev.helpdesk.config.security;
 
-import br.com.hugodev.helpdesk.Util.JwtUtil;
+import br.com.hugodev.helpdesk.util.JwtUtil;
 import br.com.hugodev.helpdesk.config.security.filter.JwtFilterValidator;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -20,8 +19,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    private JwtUtil jwtUtil;
+    private final JwtUtil jwtUtil;
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {

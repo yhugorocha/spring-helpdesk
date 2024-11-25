@@ -24,6 +24,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.Objects;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -101,10 +102,10 @@ public class TicketAttachmentService {
 
     public void ticketAttachmentSaveStorage(MultipartFile file, TicketAttachmentEntity ticket){
         try{
-            if(file.getOriginalFilename().contains("..")){
+            if(Objects.requireNonNull(file.getOriginalFilename()).contains("..")){
                 throw new FileStorageException("Sorry Filename contains invalida path sequence: "+file.getOriginalFilename());
             }
-            var newPath = new File(path + ticket.getId() + "/");
+            var newPath = new File(new StringBuilder().append(path).append(ticket.getId()).append("/").toString());
             if(!newPath.exists()){
                 newPath.mkdir();
             }

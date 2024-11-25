@@ -1,6 +1,5 @@
 package br.com.hugodev.helpdesk.controller;
 
-import br.com.hugodev.helpdesk.domain.User;
 import br.com.hugodev.helpdesk.dto.CreateUserDto;
 import br.com.hugodev.helpdesk.dto.UserDto;
 import br.com.hugodev.helpdesk.service.UserService;

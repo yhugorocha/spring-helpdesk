@@ -1,6 +1,6 @@
 package br.com.hugodev.helpdesk.service;
 
-import br.com.hugodev.helpdesk.Util.JwtUtil;
+import br.com.hugodev.helpdesk.util.JwtUtil;
 import br.com.hugodev.helpdesk.dto.LoginRequestDto;
 import br.com.hugodev.helpdesk.dto.LoginResponseDto;
 import br.com.hugodev.helpdesk.repository.UserRepository;

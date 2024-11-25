@@ -1,4 +1,4 @@
-package br.com.hugodev.helpdesk.Util;
+package br.com.hugodev.helpdesk.util;
 
 import br.com.hugodev.helpdesk.exception.BusinessException;
 import com.auth0.jwt.JWT;
@@ -64,7 +64,7 @@ public class JwtUtil {
     }
 
     public String extractUsername(DecodedJWT decodedJWT){
-        return decodedJWT.getSubject().toString();
+        return decodedJWT.getSubject();
     }
 
     public Claim getSpecificationClaim(DecodedJWT decodedJWT, String claimName){

@@ -1,6 +1,6 @@
 package br.com.hugodev.helpdesk.config.security.filter;
 
-import br.com.hugodev.helpdesk.Util.JwtUtil;
+import br.com.hugodev.helpdesk.util.JwtUtil;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
